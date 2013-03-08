@@ -4,15 +4,19 @@ class ProductsController < ApplicationController
 	end
 
 	def new
-		@product = Post.new
+		@product = Product.new
 	end
 
 	def create 
 		@product = Product.new(params[:product])
-		if post.save
-			redirect_to posts_path
+		if @product.save
+			redirect_to product_path
 		else
 			render :new
 		end
-end
+	end
+
+	def show
+	end
+	
 end

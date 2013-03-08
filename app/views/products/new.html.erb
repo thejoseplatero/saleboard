@@ -1,1 +1,15 @@
-New Post
+<h1> Products </h1>
+
+
+</div>
+	<%= form_for @product do |f| %>
+	<%= f.label :product_name %>
+	<%= f.text_field :product_name %>
+</div>
+
+<div>
+	<%= f.label :description %>
+	<%= f.text_area :description %>
+</div>
+<%=f.submit%>
+<% end %>
