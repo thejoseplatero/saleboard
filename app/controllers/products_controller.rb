@@ -1,8 +1,11 @@
 class ProductsController < ApplicationController
 	def index
-		@products = Product.includes(:comments).all
+		if params[:user_id]
+			@posts = Product.where(user_id: params[:user_id]).includes(:comments)
+		else 
+			@products = Product.includes(:comments).all
+		end
 	end
-
 	def new
 		@product = Product.new
 	end

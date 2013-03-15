@@ -3,6 +3,11 @@ Saleboard::Application.routes.draw do
   resources :products do 
     resources :comments
   end
+
+  resources :users do 
+    resources :products
+  end
+
   root to: 'products#index' 
 
 
