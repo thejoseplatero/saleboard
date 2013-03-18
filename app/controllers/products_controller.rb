@@ -1,17 +1,21 @@
 class ProductsController < ApplicationController
+
+skip_before_filter :authenticate_user!, only: [:index]
 	def index
-		if params[:user_id]
-			@posts = Product.where(user_id: params[:user_id]).includes(:comments)
-		else 
-			@products = Product.includes(:comments).all
+		user_id = params[:user_id]
+		if user_id
+			@products = Product.where(user_id: user_id)
+		else	
+			@products  = Product.includes(:comments).all
 		end
 	end
+
 	def new
 		@product = Product.new
 	end
 
 	def create 
-		@product = Product.new(params[:product])
+		@product = current_user.products.build(params[:product])
 		if @product.save
 			redirect_to products_path
 		else
@@ -19,7 +23,5 @@ class ProductsController < ApplicationController
 		end
 	end
 
-	def show
-	end
 	
 end

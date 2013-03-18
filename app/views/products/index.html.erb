@@ -3,9 +3,15 @@
 <ul>
 	<% @products.each do |p| %>
 	<li>
-	<%= p.name %>
+	<%= p.user.email %> has posted 
 	<%= p.description %>
+
+	<ul>
+		<%= render p.comments %>
+	<li><%= render 'comments/form', comment: p.comments.build, product: p %>	</li>
+	</ul>
 	</li>
+
 <% end %>
 </ul>
 <%= link_to "New Product", new_product_path %>
