@@ -4,8 +4,9 @@
 <ul>
 	<% @products.each do |p| %>
 		<li>
-			<%= p.user.name %> <%= p.user.display_email %> has posted 
-			<%= p.description %>
+			<%= p.user.name %>  has posted 
+			<%= p.name %>, 
+			<%= p.description %> it costs $<%= p.price%> posted <%= time_ago_in_words(p.created_at, include_seconds = false)  %> ago</td>
 
 			<ul>
 				<%= render p.comments %>
@@ -14,5 +15,5 @@
 		</li>
 
 	<% end %>
+	<%= link_to "New Product", new_product_path, :class => 'btn btn-large' %>
 </ul>
-<%= link_to "New Product", new_product_path %>
