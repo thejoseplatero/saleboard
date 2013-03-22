@@ -1,17 +1,18 @@
+
 <h1> All Products </h1>
 
 <ul>
 	<% @products.each do |p| %>
-	<li>
-	<%= p.user.email %> has posted 
-	<%= p.description %>
+		<li>
+			<%= p.user.name %> <%= p.user.display_email %> has posted 
+			<%= p.description %>
 
-	<ul>
-		<%= render p.comments %>
-	<li><%= render 'comments/form', comment: p.comments.build, product: p %>	</li>
-	</ul>
-	</li>
+			<ul>
+				<%= render p.comments %>
+				<li><%= render 'comments/form', comment: p.comments.build, product: p %>	</li>
+			</ul>
+		</li>
 
-<% end %>
+	<% end %>
 </ul>
 <%= link_to "New Product", new_product_path %>
