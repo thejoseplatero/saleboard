@@ -6,6 +6,7 @@ gem 'devise'
 
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'paperclip'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
