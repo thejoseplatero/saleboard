@@ -3,8 +3,11 @@
 
 <ul>
 	<% @products.each do |p| %>
-		<li>
- 		<%= image_tag p.image.url(:thumb)%>  
+		
+			<div>
+ 				<%= image_tag p.image.url(:thumb), class: "img-polaroid"%>  
+		
+		<li>	
 			<%= p.user.name %>  has posted 
 			<%= link_to p.name, product_path(p.id)  %>, 
 			<%= p.description %> it costs $<%= p.price%> posted <%= time_ago_in_words(p.created_at, include_seconds = false)  %> ago
@@ -17,6 +20,7 @@
 				<li><%= render 'comments/form', comment: p.comments.build, product: p %>	</li>
 			</ul>
 		</li>
+			</div>
 
 	<% end %>
 	<%= link_to "New Product", new_product_path, :class => 'btn btn-large' %>
