@@ -23,5 +23,9 @@ skip_before_filter :authenticate_user!, only: [:index]
 		end
 	end
 
+	def show
+    @product = Product.find(params[:id])
+  end
+
 	
 end

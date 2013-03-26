@@ -5,8 +5,9 @@
 	<% @products.each do |p| %>
 		<li>
 			<%= p.user.name %>  has posted 
-			<%= p.name %>, 
+			<%= link_to p.name, product_path(p.id)  %>, 
 			<%= p.description %> it costs $<%= p.price%> posted <%= time_ago_in_words(p.created_at, include_seconds = false)  %> ago</td>
+
 
 			<ul>
 				<%= render p.comments %>
