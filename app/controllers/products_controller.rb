@@ -2,12 +2,17 @@ class ProductsController < ApplicationController
 
 skip_before_filter :authenticate_user!, only: [:index]
 	def index
+	
 		user_id = params[:user_id]
 		if user_id
-			@products = Product.where(user_id: user_id)
+			@products = Product.where(user_id: user_id)    
+				
 		else	
 			@products  = Product.includes(:comments).all
 		end
+
+
+
 	end
 
 	def new
@@ -26,6 +31,12 @@ skip_before_filter :authenticate_user!, only: [:index]
 	def show
     @product = Product.find(params[:id])
   end
+
+  		def destroy
+			@product = Product.find(params[:id])
+			@product.destroy
+			redirect_to products_path
+		end
 
 	
 end
