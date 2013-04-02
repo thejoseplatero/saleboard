@@ -8,6 +8,8 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'paperclip'
 
+gem 'aws-sdk'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
