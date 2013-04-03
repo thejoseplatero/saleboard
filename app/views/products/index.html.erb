@@ -8,7 +8,7 @@
  				<%= image_tag p.image.url(:thumb), class: "img-polaroid"%>  
 		
 		<li>	
-			<%= p.user.name %>  has posted 
+			<%= p.user.display_name%>  has posted 
 			<%= link_to p.name, product_path(p.id)  %>, 
 			<%= p.description %> it costs $<%= p.price%> posted <%= time_ago_in_words(p.created_at, include_seconds = false)  %> ago
  

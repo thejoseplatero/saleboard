@@ -16,9 +16,11 @@ class User < ActiveRecord::Base
 
 
 
-  def display_email
-    unless provider=='twitter'
-      "( #{email} )"
+  def display_name
+    if provider=='twitter'
+      name 
+    else
+      " #{email}"
     end
   end
 
