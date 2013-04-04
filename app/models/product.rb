@@ -10,13 +10,6 @@ class Product < ActiveRecord::Base
   :styles => {
     :thumb => "100x100#",
     :small => "150x150>",
-    :medium => "200x200>" },
-    storage: :s3,
-    s3_credentials: {
-      access_key_id: 'AKIAJNUSQQMYYELN5VZQ',
-      secret_access_key: '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',
-      bucket: 'hackeryou'
-
-    }
-
+    :medium => "200x200>" }
+    
 end
