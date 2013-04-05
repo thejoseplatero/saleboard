@@ -1,8 +1,10 @@
-,<h1> New Product </h1>
+<h1> New Product </h1>
+
+<% post.errors.each |errors| %> 
 
 
-<div>
 	<%= form_for @product, :url => products_path, :html => {multipart: true} do |f| %>
+<div>
 	<%= f.label :name %>
 	<%= f.text_field :name %>
 	
@@ -24,5 +26,7 @@
 	<%= f.label :description %>
 	<%= f.text_area :description %>
 </div>	
-<%=f.submit%>
+<div>
+	<%=f.submit%>
+</div>
 <% end %>

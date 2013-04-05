@@ -1,27 +1,29 @@
-
+	
 <h1> All Products </h1>
 
-<ul>
-	<% @products.each do |p| %>
-		
-			<div>
- 				<%= image_tag p.image.url(:thumb), class: "img-polaroid"%>  
-		
-		<li>	
-			<%= p.user.display_name%>  has posted 
-			<%= link_to p.name, product_path(p.id)  %>, 
-			<%= p.description %> it costs $<%= p.price%> posted <%= time_ago_in_words(p.created_at, include_seconds = false)  %> ago
- 
-				<td> <%= link_to 'Destroy', p, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-small'  %> </td>
+<div class='row'>
+	<% @products.each_with_index do |p, i| %>
 
+			<% if i % 4 == 0 %>
+				</div><div class ='row'>
+			<% end %>
 
-			<ul>
-				<%= render p.comments %>
-				<li><%= render 'comments/form', comment: p.comments.build, product: p %>	</li>
-			</ul>
-		</li>
+		<div class ='span3'>
+	 			<%= image_tag p.image.url(:thumb), class: "img-polaroid"%> 	
+			 	<div>
+			 		<%= p.user.display_name%>  has posted 
+					<%= link_to p.name, product_path(p.id)  %>, 
+					<%= p.description %> it costs $<%= p.price%> posted <%= time_ago_in_words(p.created_at, include_seconds = false)%> ago 
+					</div>
+				<%= link_to 'Destroy', p, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-small'  %> 
+			
+					<%= render p.comments %>
+					<div><%= render 'comments/form', comment: p.comments.build, product: p %>	</div>
+				</ul>
 			</div>
-
+	
 	<% end %>
-	<%= link_to "New Product", new_product_path, :class => 'btn btn-large' %>
-</ul>
+
+	
+	<div>	<%= link_to "New Product", new_product_path, :class => 'btn btn-large' %> </div>
+</div>	

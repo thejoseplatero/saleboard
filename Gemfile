@@ -10,6 +10,12 @@ gem 'paperclip'
 
 gem 'aws-sdk'
 
+gem 'geocoder'  
+
+gem 'gmaps4rails'
+
+gem "nifty-generators", :group => :development
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -49,3 +55,5 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+
+gem "mocha", :group => :test

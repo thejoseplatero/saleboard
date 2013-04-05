@@ -1,0 +1,11 @@
+<%if @product.errors.any? %>
+  <div class="alert">
+    <button type="button", class="close data-dismiss="alert"> &times; </button>
+    <strong> Error! </strong> This is what's wrong with your Product:
+    <ul>
+      <% @product.errors.full_message.each do |error| %>
+      <li> <%= error %> </li>
+      <% end %>
+    <ul>
+    </div>
+  <% end %>
