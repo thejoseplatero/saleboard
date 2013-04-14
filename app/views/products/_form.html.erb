@@ -1,0 +1,50 @@
+
+<h1> New Product </h1>
+
+<% if @product.errors.any? %>
+  <div class='alert alert-error'>
+    <strong> Error! </strong> Your Product cannot be saved:
+    
+    <ul>
+      <%@product.errors.full_messages.each do |message|%>
+        <li><%=message%></li>
+      <% end %>
+    </ul>
+  </div>
+<%end%>
+
+<%= form_for @product, :html => {multipart: true} do |f| %>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %> 
+  </div>
+
+  <div>
+    <%= f.file_field :image %>
+  </div>
+
+  <div>
+    <%= f.label :price %>
+      <div class="input-prepend"> 
+        <span class="add-on">$</span>
+        <%= f.text_field :price, :class => 'span2' %>
+      </div>
+  </div>
+
+  <div>
+    <%= f.label :description %>
+    <%= f.text_area :description, rows: 3%>
+  </div>
+
+<p>
+    <%= f.label :address %><br />
+    <%= f.text_field :address %>
+  </p>
+
+
+
+  <div>
+    <%=f.submit "Save Product", class: 'btn btn-primary' %>
+  </div>
+
+<% end %>
