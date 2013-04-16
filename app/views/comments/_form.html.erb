@@ -1,6 +1,6 @@
 
 <%= form_for [product, comment] do |f|%>
-	<%= f.text_field :body, placeholder: 'Add a Comment..' %>
+	<%= f.text_field :body, placeholder: 'Comment...', :class =>  "input-small"%>
 	<%=f.submit%>
 
 <% end %>

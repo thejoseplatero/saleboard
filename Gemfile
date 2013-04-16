@@ -16,6 +16,7 @@ gem 'gmaps4rails'
 
 gem "nifty-generators", :group => :development
 
+gem 'ransack'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

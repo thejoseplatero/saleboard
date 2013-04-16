@@ -1,35 +1,41 @@
 	
-<h1> All Products </h1>
+	<div class="hero-unit">
+  <h1>Products</h1>
+   <% if user_signed_in? %>	
+        <%= link_to "Sell Something", new_product_path, :class=>'btn btn-primary'%></li>
+      <%end%>	
+</div>
 
 <div class='row'>
 	<% @products.each_with_index do |p, i| %>
-
-			<% if i % 4 == 0 %>
-				</div><div class ='row'>
-			<% end %>
-
-		<div class ='span3'>
-	 			<%= image_tag p.image.url(:thumb), class: "img-polaroid"%> 	
-			 	<div>
-			 		<%= p.user.display_name%>  has posted 
-					<%= link_to p.name, product_path(p.id)  %>, 
-					<%= p.description %> it costs $<%= p.price%> posted <%= time_ago_in_words(p.created_at, include_seconds = false)%> ago 
-				</div>
-				<div><%=p.address%></div>
-				<%=p.longitude%>
-			
-			<% if current_user == p.user%>
-				<%= link_to 'Destroy', p, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-small'  %> 
-				<%= link_to 'edit', edit_product_path(p), :class => 'btn btn-small' %>
-			<%end%>
-			
-					<%= render p.comments %>
-					<div><%= render 'comments/form', comment: p.comments.build, product: p %>	</div>
-				</ul>
+		<% if i % 4 == 0 %>
+			</div><div class ='row'>
+		<% end %>
+	<div class ='span2'>
+		<ul class ='thumbnails'>
+			<li class ='span2'>
+				<div class='thumbnail'>
+					<%= image_tag p.image.url(:medium)%> 	
+					<h3>
+		 				<%= link_to p.name, product_path(p.id)  %>
+					</h3>
+					<p> 
+		 				<%= p.description %> it costs $<%= p.price%> posted <%= time_ago_in_words(p.created_at,
+		 				include_seconds = false)%> ago it was posted from <%=p.address%>
+		 			</p>
+		 			<p>
+						<% if current_user == p.user%>
+							<%= link_to 'Delete', p, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-small'  %> 
+							<%= link_to 'Edit', edit_product_path(p), :class => 'btn btn-small' %>
+						<%end%>
+					</p>
+					<p>
+						<%= render p.comments %>
+						<%= render 'comments/form', comment: p.comments.build, product: p %>		
+					</p>	
 			</div>
+			</li>
+		</ul>	
+	</div>
+	<%end%>
 	
-				<% end %>
-
-	
-	<div>	<%= link_to "New Product", new_product_path, :class => 'btn btn-large' %> </div>
-</div>	

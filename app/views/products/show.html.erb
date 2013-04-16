@@ -1,9 +1,10 @@
-<div>
-  <%= @product.name %> 
-  <%= @product.description %> 
-  <%= @product.price %> 
-</div>
+<div class = "media">
+   <%= image_tag @product.image.url(:medium), :class => "img-polaroid media-object pull-left"%>  
+  <div class = "media-body"> 
+    <h4 class = "media-heading"> <%= @product.name%> </h4>
+      <%= @product.description %>
+      $<%= @product.price %>
+  </div>
 
-<div>
-  <%= image_tag @product.image.url(:medium), class: "img-polaroid"%>  
+ 
 </div>

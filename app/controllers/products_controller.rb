@@ -11,7 +11,21 @@ skip_before_filter :authenticate_user!, only: [:index]
 			@products  = Product.includes(:comments).all
 		end
 
+		if params[:search]
+    	@products = Product.near(params[:search], params[:distance], :order => :distance)
+  			else
+    	@Products = Product.all
+  	end
+		
+		if params[:description]
+			#@products = @products.includes(:comments).where(description: params[:description])
+			@products = Product.where("description LIKE ? OR name LIKE ?" , "%#{params[:description]}%", "%#{params[:description]}%")
+		end
+
+
 	end
+
+
 
 	def edit 
 		@product = Product.find(params[:id])
