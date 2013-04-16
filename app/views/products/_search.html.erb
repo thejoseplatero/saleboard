@@ -2,7 +2,7 @@
   <%=label_tag :description, "Find" %>
   <%= text_field_tag :description, params[:description], :class => "search-query" %>
   <%= label_tag :search, "within  kilometers of" %>
-  <%= select_tag :distance, options_for_select([25, 50, 100]) %>
+  <%= select_tag :distance, options_for_select([1, 25, 50, 100]) %>
   <%= text_field_tag :search, params[:search], :class => "search-query"%> 
   <%= submit_tag "search", :name=> nil, :class => 'btn btn-small'%>
 <% end %>
