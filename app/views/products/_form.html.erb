@@ -13,7 +13,7 @@
   </div>
 <%end%>
 
-<%= form_for @product, :html => {multipart: true, class: 'form-horizontal'} do |f| %>
+<%= form_for @product, :html => {multipart: true} do |f| %>
   <div>
     <%= f.label :name %>
     <%= f.text_field :name %> 

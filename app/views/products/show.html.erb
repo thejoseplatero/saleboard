@@ -4,7 +4,13 @@
     <h4 class = "media-heading"> <%= @product.name%> </h4>
       <%= @product.description %>
       $<%= @product.price %>
+
+
   </div>
 
+  <div>
+ <%= render @product.comments %>
+ <%= render 'comments/form', comment: @product.comments.build, product: @product %>
  
+  </div>
 </div>

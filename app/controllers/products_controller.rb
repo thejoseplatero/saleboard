@@ -13,6 +13,7 @@ skip_before_filter :authenticate_user!, only: [:index]
 		end
 
 		if params[:search].present?
+			@search = params[:search]
     	@products = @products.near(params[:search], params[:distance], :order => :distance)
   	end
 		
