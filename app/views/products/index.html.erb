@@ -4,50 +4,47 @@
    <% if user_signed_in? %>	
         <%= link_to "Sell Something", new_product_path, :class=>'btn btn-primary'%></li>
       <%end%>	
-</div>
+	</div>
 
-<div class='row'>
-	<% @products.each_with_index do |p, i| %>
-		<% if i % 4 == 0 %>
-			</div><div class ='row'>
-		<% end %>
-	<div class ='span2'>
-		<ul class ='thumbnails'>
-			<li class ='span2'>
-				<div class='thumbnail well'>
-					<%= image_tag p.image.url(:medium)%> 	
-					  <h3>	<%= link_to p.name, product_path(p.id)  %></h3>
-  
-  					<p class ="muted"> 
-				 			<% if @search %>
-				 			<%=number_with_precision(p.distance_to(@search), :precision => 2)%> miles from <%=@search%>
-		 					<%end%> 
-		 				</p>
+<% @products.each_with_index do |p, i| %>
+<div class= 'media well	span4'> 
+				<%= image_tag p.image.url(:medium), :class=>'img-polaroid	media-object pull-left'%> 
 					
-				 		<p class = 'lead'>
-				 				<%= p.description %> 
-				 		
+			<div class ="media-body">	
+				 <p class = 'lead'>
+				 		<%= p.description %>
+					</p>
+					 <p class = 'lead'>	 
 				 		<strong>
 				 				$<%= p.price%>
 				 		
 				 		</strong>
-						</p>
-						<em>
-				 				posted <%= time_ago_in_words(p.created_at,
-				 				include_seconds = false)%> ago
-				 		</em>
+				 	</p>
+
+					<p class ="muted"> 
+				 		<% if @search %>
+				 			<%=number_with_precision(p.distance_to(@search), :precision => 2)%> miles from <%=@search%>
+		 				<%end%> 
 		 			</p>
+				
+					<p>
+					<em>
+				 		posted <%= time_ago_in_words(p.created_at,
+				 		include_seconds = false)%> ago
+				 	</em>
+		 			</p>
+		 			<p>
+		 				<%= link_to "More", product_path(p.id), :class => 'btn btn-small'  %>
 						<% if current_user == p.user%>
-							<%= link_to 'Delete', p, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-small'  %> 
 							<%= link_to 'Edit', edit_product_path(p), :class => 'btn btn-small' %>
+							<%= link_to 'Delete', p, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-small'  %> 
 						<%end%>
 					</p>
+				</div>
 			</div>
-			</li>
-		</ul>	
-	</div>
-
-
+		
+	
 	<%end%>
+
 
 

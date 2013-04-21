@@ -1,16 +1,17 @@
-<div class = "media">
+<div class = "media well">
    <%= image_tag @product.image.url(:medium), :class => "img-polaroid media-object pull-left"%>  
   <div class = "media-body"> 
-    <h4 class = "media-heading"> <%= @product.name%> </h4>
+    <p class = 'lead'>
       <%= @product.description %>
       $<%= @product.price %>
+    <p>
 
 
   </div>
-
-  <div>
  <%= render @product.comments %>
  <%= render 'comments/form', comment: @product.comments.build, product: @product %>
- 
+  </div>
+
+
   </div>
 </div>
