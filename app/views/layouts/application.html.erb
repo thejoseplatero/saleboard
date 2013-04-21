@@ -28,7 +28,7 @@
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">
 
-             <%=current_user.name%> <b>v</b>
+             <%=current_user.display_name%> <b>v</b>
             
           </a>
           <ul class="dropdown-menu" role="menu" aria-labelledby="dlabel">
@@ -64,18 +64,11 @@
   </div>
 </div>
 
+<div class="container">
+          <%= yield %>
 
-
-<div class="container-fluid">
-  <div class="row">
-    <div class="span2">
-</ul>
-    </div>
-    <div class="span10">
-     <%= yield %>
-    </div>
-  </div>
 </div>
+
 
 
 

@@ -1,8 +1,8 @@
-<%= form_tag products_path, method: :get, :class=> 'navbar-search pull-left form-inline navbar-text' do %>
-  <%=label_tag :description, "Find" %>
+<%= form_tag products_path, method: :get, :class=> 'navbar-search form-inline navbar-text' do %>
+  <%=label_tag :description, "Find " %>
   <%= text_field_tag :description, params[:description], :class => "search-query input-medium",  
   placeholder:"Product" %>
-  <%= label_tag :search, "within"%>
+  <%= label_tag :search, " within "%>
   <%= select_tag :distance, options_for_select([5, 10, 25, 50, 100]), :class => "input-small"%> miles of
   <%= text_field_tag :search, params[:search], :class => "search-query input-small", placeholder:"Postal Code"%> 
   

@@ -5,8 +5,6 @@
       <%= @product.description %>
       $<%= @product.price %>
     <p>
-
-
   </div>
  <%= render @product.comments %>
  <%= render 'comments/form', comment: @product.comments.build, product: @product %>

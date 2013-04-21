@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
 
   has_attached_file :image
 
-
+  
 
   def display_name
     if provider=='twitter'

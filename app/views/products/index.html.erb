@@ -1,13 +1,17 @@
-	
-	<div class="hero-unit">
-  <h1>Products</h1>
-   <% if user_signed_in? %>	
+<div class="page-header">
+  
+    <% if user_signed_in? %>	
+    <h1>Something<small><%=current_user.address%></small></h1>
         <%= link_to "Sell Something", new_product_path, :class=>'btn btn-primary'%></li>
       <%end%>	
-	</div>
+
+    
+</div>
+
+	
 
 <% @products.each_with_index do |p, i| %>
-<div class= 'media well	span4'> 
+<div class= 'media well'> 
 				<%= image_tag p.image.url(:medium), :class=>'img-polaroid	media-object pull-left'%> 
 					
 			<div class ="media-body">	
@@ -24,6 +28,10 @@
 					<p class ="muted"> 
 				 		<% if @search %>
 				 			<%=number_with_precision(p.distance_to(@search), :precision => 2)%> miles from <%=@search%>
+				 			<%else%>
+				 			<% if user_signed_in? %>
+							<%=number_with_precision(p.distance_to(current_user.address), :precision => 2)%> miles from You
+							<%end%>
 		 				<%end%> 
 		 			</p>
 				

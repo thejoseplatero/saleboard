@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
-  attr_accessible :description, :name, :price, :image, :address, :latitude, :longitude
+  attr_accessible :description, :price, :image, :address, :latitude, :longitude
   validates :description, :price, presence: true
   geocoded_by :address
   after_validation :geocode, :if => :address_changed?
