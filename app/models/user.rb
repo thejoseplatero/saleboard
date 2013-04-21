@@ -22,7 +22,6 @@ class User < ActiveRecord::Base
   :latitude => :latitude, :longitude => :longitude, :address => :address
   after_validation :geocode
 
-  
 
   def display_name
     if provider=='twitter'
@@ -37,7 +36,7 @@ class User < ActiveRecord::Base
   end
 
   def password_required?
-    uid.blank?
+    uid.blank? && new_record?
   end
 private
 

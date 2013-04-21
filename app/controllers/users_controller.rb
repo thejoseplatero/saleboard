@@ -2,11 +2,10 @@ class UsersController < ApplicationController
 
 
   def update
-      if current_user.update_attributes(address: params[:user][:address])
-        redirect_to products_path
-      else
-        render :edit
-      end
+      u = User.find(params[:id])
+      u.address = params[:user][:address]
+      u.save!
+      redirect_to products_path
   end
 
 end

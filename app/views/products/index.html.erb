@@ -4,10 +4,10 @@
     <% if user_signed_in? %>	
     
     	<small>
-    		<% if current_user.address %>
+    		<% if current_user.address.present? %>
 	    		<%=current_user.address%>
     		<% else %>
-    		<%= render "users/address", user: current_user %>
+	    		<%= render "users/address", user: current_user %>
     		<% end %>
 
     	</small>
