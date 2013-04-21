@@ -1,7 +1,17 @@
 <div class="page-header">
-  
+  <h1>Near
+
     <% if user_signed_in? %>	
-    <h1>Something<small><%=current_user.address%></small></h1>
+    
+    	<small>
+    		<% if current_user.address %>
+	    		<%=current_user.address%>
+    		<% else %>
+    		<%= render "users/address", user: current_user %>
+    		<% end %>
+
+    	</small>
+    </h1>
         <%= link_to "Sell Something", new_product_path, :class=>'btn btn-primary'%></li>
       <%end%>	
 

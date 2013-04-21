@@ -18,6 +18,10 @@ class User < ActiveRecord::Base
 
   has_attached_file :image
 
+  geocoded_by :current_sign_in_ip,
+  :latitude => :latitude, :longitude => :longitude, :address => :address
+  after_validation :geocode
+
   
 
   def display_name
@@ -34,5 +38,12 @@ class User < ActiveRecord::Base
 
   def password_required?
     uid.blank?
+  end
+private
+
+  def fetch_address
+    if address.blank?
+      # Geocode based on current_sign_in_ip
+    end
   end
 end

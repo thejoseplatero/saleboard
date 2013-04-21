@@ -2,9 +2,6 @@ class ProductsController < ApplicationController
 
 skip_before_filter :authenticate_user!, only: [:index]
 	def index
-	
-
-
 		user_id = params[:user_id]
 		if user_id
 			@products = Product.where(user_id: user_id)    	
@@ -19,7 +16,7 @@ skip_before_filter :authenticate_user!, only: [:index]
 		
 		if params[:description].present?
 			#@products = @products.includes(:comments).where(description: params[:description])
-			@products = @products.where("description LIKE ? OR name LIKE ?" , "%#{params[:description]}%", "%#{params[:description]}%")
+			@products = @products.where("description LIKE ?" , "%#{params[:description]}%")
 		end
 	end
 
