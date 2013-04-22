@@ -1,6 +1,8 @@
-
-<%= form_for [product, comment] do |f|%>
+<div class=' span4'>
+<%= form_for [product, comment] do |f| %>
 	<%= f.text_field :body, placeholder: 'Comment...'%>
-	<%=f.submit%>
-
+  <div>
+	<%=f.submit :class => 'btn btn-primary'%>
+</div>
 <% end %>
+</div>

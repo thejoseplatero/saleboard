@@ -1,4 +1,4 @@
-class Product < ActiveRecord::Base
+  class Product < ActiveRecord::Base
   attr_accessible :description, :price, :image, :address, :latitude, :longitude
   validates :description, :price, presence: true
   geocoded_by :address

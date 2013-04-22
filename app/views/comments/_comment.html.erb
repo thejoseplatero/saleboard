@@ -1,11 +1,9 @@
 
-<div class='well well-small clearfix'>
-<%= comment.user.display_name%> has posted  <%=comment.body%>, <%= time_ago_in_words(comment.created_at, include_seconds = false) %> 
-
-        </p>
-            <% if @current_user == comment.user%>
-              You posted this comment
-            <%end%>
-          </p>
-
+<div class='well well-small span4'>
+    <p class ='lead '>
+        <%=comment.body%>
+    </p>
+   <em>   
+   <%= comment.user.display_name%> posted this comment <%= time_ago_in_words(comment.created_at, include_seconds = false) %> ago
+    </em>
 </div>
